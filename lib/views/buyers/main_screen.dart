@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
     const StoreScreen(),
     const CartScreen(),
     const SearchScreen(),
-    const AccountScreen()
+    AccountScreen()
   ];
 
   @override

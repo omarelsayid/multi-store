@@ -10,7 +10,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_store/vendors/controller/vendor_reigster_controller.dart';
 
-
 class VendorRigestrationScreen extends StatefulWidget {
   const VendorRigestrationScreen({super.key});
 
@@ -34,6 +33,8 @@ class _VendorRigestrationScreenState extends State<VendorRigestrationScreen> {
     Uint8List im = await _vendorController.pickStoreImage(ImageSource.gallery);
     setState(() {
       _image = im;
+
+      
     });
   }
 
@@ -45,7 +46,7 @@ class _VendorRigestrationScreenState extends State<VendorRigestrationScreen> {
   }
 
   String? _taxStatus;
-  List<String> _taxOption = ['YES', 'NO'];
+  final List<String> _taxOption = ['YES', 'NO'];
   final GlobalKey<FormState> _formKey = GlobalKey();
   _saveVendorDetail() async {
     if (_formKey.currentState!.validate()) {
@@ -54,6 +55,7 @@ class _VendorRigestrationScreenState extends State<VendorRigestrationScreen> {
               stateValue, cityValue, _taxStatus!, taxNumber, _image!)
           .whenComplete(() {
         _formKey.currentState!.reset();
+        log(_image.toString());
         _image = null;
       });
     } else {

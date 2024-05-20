@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,6 +25,7 @@ class VendorController {
     XFile? _file = await _imagePicker.pickImage(source: source);
 
     if (_file != null) {
+      log(_file.toString());
       return await _file.readAsBytes();
     } else {
       return print('No Image Selected');

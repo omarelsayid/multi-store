@@ -1,13 +1,11 @@
- import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:multi_store/firebase_options.dart';
+import 'package:multi_store/provider/cart_provider.dart';
 import 'package:multi_store/provider/product_provider.dart';
 import 'package:multi_store/vendors/views/screens/main_vendor_screen.dart';
-import 'package:multi_store/views/buyers/auth/login_screen.dart';
-import 'package:multi_store/views/buyers/auth/register_screen.dart';
 import 'package:multi_store/views/buyers/main_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +17,9 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) {
       return ProductProvider();
+    }),
+    ChangeNotifierProvider(create: (_) {
+      return CartProvider();
     })
   ], child: const MyApp()));
 }
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Brand-Blod',
       ),
-      home: const MainVendorScreen(),
+      home: const MainScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

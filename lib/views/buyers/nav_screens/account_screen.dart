@@ -3,10 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:multi_store/views/buyers/auth/login_screen.dart';
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({super.key});
-
+  AccountScreen({super.key});
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance.collection('buyers');
@@ -111,6 +112,14 @@ class AccountScreen extends StatelessWidget {
                   title: Text('Orders'),
                 ),
                 ListTile(
+                  onTap: () async {
+                    await _auth.signOut();
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ));
+                  },
                   leading: const Icon(Icons.logout),
                   title: Text(
                     'Logout',
@@ -122,7 +131,7 @@ class AccountScreen extends StatelessWidget {
           );
         }
 
-        return const Center(child: CircularProgressIndicator());
+        return const Center(child: Center(child: CircularProgressIndicator()));
       },
     );
   }
