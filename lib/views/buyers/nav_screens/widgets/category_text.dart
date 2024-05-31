@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:multi_store/views/buyers/nav_screens/category_screen.dart';
 import 'package:multi_store/views/buyers/nav_screens/widgets/home_product.dart';
 import 'package:multi_store/views/buyers/nav_screens/widgets/main_products_widget.dart';
 
@@ -55,7 +56,9 @@ class _CategoryTextState extends State<CategoryText> {
                         itemBuilder: (context, index) {
                           final categoryData = snapshot.data!.docs[index];
                           return Padding(
-                            padding: const EdgeInsets.only(right: 8),
+                            padding: const EdgeInsets.only(
+                              right: 8,
+                            ),
                             child: ActionChip(
                               shape: CircleBorder(eccentricity: 0.4),
                               backgroundColor: Colors.yellow.shade900,
@@ -77,7 +80,13 @@ class _CategoryTextState extends State<CategoryText> {
                         },
                       )),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return const CategoryScreen();
+                              },
+                            ));
+                          },
                           icon: const Icon(Icons.arrow_forward_ios))
                     ],
                   ),

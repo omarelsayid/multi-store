@@ -5,7 +5,6 @@ import 'package:multi_store/vendors/models/vendor_user_models.dart';
 import 'package:multi_store/vendors/views/auth/vendor_rigestraion.dart';
 import 'package:multi_store/vendors/views/screens/main_vendor_screen.dart';
 
-
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
 

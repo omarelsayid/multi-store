@@ -5,12 +5,12 @@ import 'package:multi_store/vendors/views/screens/main_vendor_screen.dart';
 import 'package:multi_store/views/buyers/auth/register_screen.dart';
 import 'package:multi_store/views/buyers/main_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class BuyersLoginScreen extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<BuyersLoginScreen> createState() => _BuyersLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _BuyersLoginScreenState extends State<BuyersLoginScreen> {
   late String email;
 
   late String password;
@@ -22,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
   _loginUsers() async {
     if (_formKey.currentState!.validate()) {
       String res = await _authController.loginUsers(email, password);
-     
     } else {
       setState(() {
         _isLoading = true;
@@ -79,11 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             InkWell(
-              onTap: () {
-                _loginUsers();
+              onTap: () async{
+               await _loginUsers();
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) {
-                  return const MainVendorScreen();
+                  return const MainScreen();
                 }));
               },
               child: Container(

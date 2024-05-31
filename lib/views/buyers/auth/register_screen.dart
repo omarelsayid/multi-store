@@ -60,8 +60,10 @@ class _buyersRegisterScreenState extends State<buyersRegisterScreen> {
         });
       });
 
-      return showSnakBar(
-          context, 'Congratulation The Account Has Been Created For You');
+      if (res == 'scuccess') {
+        return showSnakBar(
+            context, 'Congratulation The Account Has Been Created For You');
+      }
     } else {
       setState(() {
         _isLoading = false;
@@ -181,8 +183,13 @@ class _buyersRegisterScreenState extends State<buyersRegisterScreen> {
                 ),
               ),
               GestureDetector(
-                onTap: () {
-                  _signUpUser();
+                onTap: () async {
+                  await _signUpUser();
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const MainScreen();
+                    },
+                  ));
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width - 40,
@@ -209,9 +216,9 @@ class _buyersRegisterScreenState extends State<buyersRegisterScreen> {
                   const Text('Alread Have An Account'),
                   TextButton(
                       onPressed: () {
-                        Navigator.push(context,
+                        Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) {
-                          return LoginScreen();
+                          return BuyersLoginScreen();
                         }));
                       },
                       child: const Text('Login'))

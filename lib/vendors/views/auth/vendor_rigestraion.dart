@@ -54,7 +54,7 @@ class _VendorRigestrationScreenState extends State<VendorRigestrationScreen> {
           .registerVendor(bussinessName, email, phoneNumber, countryValue,
               stateValue, cityValue, _taxStatus!, taxNumber, _image!)
           .whenComplete(() {
-        _formKey.currentState!.reset();
+        // _formKey.currentState!.reset();
         log(_image.toString());
         _image = null;
       });
