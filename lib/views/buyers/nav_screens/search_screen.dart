@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:multi_store/views/buyers/productDetail/product_detail_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -62,36 +63,47 @@ class _SearchScreenState extends State<SearchScreen> {
                 });
                 return Column(
                   children: searchedData.map((e) {
-                    return Card(
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: 100,
-                            width: 100,
-                            child: Image.network(e['imageUrl'][0]),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                e['productName'],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                e['productPrice'].toString(),
-                                style: TextStyle(
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return ProductDetailScreen(
+                              productData: e,
+                            );
+                          },
+                        ));
+                      },
+                      child: Card(
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 100,
+                              width: 100,
+                              child: Image.network(e['imageUrl'][0]),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  e['productName'],
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.yellow[900]),
-                              )
-                            ],
-                          )
-                        ],
+                                  ),
+                                ),
+                                Text(
+                                  e['productPrice'].toString(),
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.yellow[900]),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),
