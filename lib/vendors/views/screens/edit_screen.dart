@@ -33,8 +33,7 @@ class EditProductScreen extends StatelessWidget {
             ),
           ]),
         ),
-        body: const TabBarView(
-            children: [PublishTabScreen(), UnPublishedScreen()]),
+        body: TabBarView(children: [PublishTabScreen(), UnPublishedScreen()]),
       ),
     );
   }

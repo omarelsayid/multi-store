@@ -3,10 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store/vendors/views/screens/earnings_screen.dart';
 import 'package:multi_store/vendors/views/screens/edit_screen.dart';
-import 'package:multi_store/vendors/views/screens/order_vendor_screen.dart';
+import 'package:multi_store/vendors/views/screens/vendor_account_screen.dart';
+import 'package:multi_store/vendors/views/screens/vendor_order_screen.dart';
 import 'package:multi_store/vendors/views/screens/upload_screen.dart';
 import 'package:multi_store/vendors/views/screens/vendor_logout_screen.dart';
 import 'package:multi_store/views/buyers/nav_screens/account_screen.dart';
+import 'package:multi_store/views/buyers/nav_screens/store_screen.dart';
 
 class MainVendorScreen extends StatefulWidget {
   const MainVendorScreen({Key? key}) : super(key: key);
@@ -19,11 +21,11 @@ class _MainVendorScreenState extends State<MainVendorScreen> {
   int _pageIndex = 0;
 
   final List<Widget> _pages = [
-    EarningsScreen(),
+    const EarningsScreen(),
     UploadScreen(),
-    EditProductScreen(),
+    const EditProductScreen(),
     VendorOrderScreen(),
-    AccountScreen()
+    const VendorAccountScreen()
   ];
 
   @override
